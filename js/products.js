@@ -19,6 +19,7 @@ function showProductsList(){
                 i++;
             for(let product of products){
                  LIST.innerHTML+=`
+                <div class="list-group-item list-group-item-action cursor-active">
                  <div class="row">
                    <div class="col-3">
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
