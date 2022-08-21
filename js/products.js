@@ -1,41 +1,38 @@
-let API = "https://japceibal.github.io/emercado-api/cats_products/101.json"
-
-
+let API = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+let productsArray = [];
+let products =[];
+let LIST = document.getElementById("list");
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(API).then(function(resultObj){
         if (resultObj.status === "ok"){
-            productsArray = resultObj.data
-            let htmlContentToAppend = "";
-            for(let i = 0; i < productsArray.length; i++){
-                let products = productsArray[i];
-                    htmlContentToAppend += `
-                    <div (${products.id})">
-                        <div>
-                            <div>
-                                <img src="${products.image}" alt="${products.description}">
-                                <div>${products.currency} ${products.cost}</div>
-                            </div>
+            productsArray = resultObj.data;
+            products = productsArray.products;
+            console.log(products);
+            showProductsList()
+       }}
+)});
 
-                            <div>
-                                <div>
-                                    <h4>${products.name}</h4>
-                                    <small>${products.soldCount}</small>
-                                </div>
-                                <p">${products.description}</p>
-                            </div>
-                        </div>
-                    </div>   
-                    `
-                    }
-                    document.getElementById("list").innerHTML += htmlContentToAppend;
-                     
-        }
-});
-})
-/* async function loadData(){
-    let response = await fetch(API);
-    let json = await response.json();
-    console.log(json.products);
-    }
+LIST.innerHTML = "";
+function showProductsList(){
+    let i=0;
+        while (i<1){
+                i++;
+            for(let product of products){
+                 LIST.innerHTML+=`
+                 <div class="row">
+                   <div class="col-3">
+                        <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <h4>${product.name} - ${product.currency} ${product.cost}<h4>
+                        <small class="text-muted">${product.soldCount} unidades vendidas</small>
+                        <p class="mb-1">${product.description}</p>
+                    </div>
+                </div>
+            </div>
+            `
+        }}}
 
-loadData(); */
+        console.log(LIST);
+
+        
