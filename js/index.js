@@ -10,8 +10,8 @@ regBtn.addEventListener("click", () =>  {
     //este "for" revisa que ambos campos tengan contenido
 
     if(allFields === true) {
-        let userName = document.getElementById("floatingInput").value;
-        localStorage.setItem("userName", userName);
+        let userName = document.getElementById("floatingInput");
+        localStorage.setItem("userName", userName.value);
         window.location.replace("https://frangag.github.io/ecommerce.github.io/main.html")
         // "replace" no deja volver a la página anterior, para un login viene bien
         // "assign" hace algo parecido pero deja volver atrás
