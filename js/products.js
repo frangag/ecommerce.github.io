@@ -1,4 +1,5 @@
-let API = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+let categoryID = localStorage.getItem("catID");
+let API = `https://japceibal.github.io/emercado-api/cats_products/${categoryID}.json`
 let productsArray = [];
 let products =[];
 let LIST = document.getElementById("list");
