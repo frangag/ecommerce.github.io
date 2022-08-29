@@ -7,10 +7,15 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             productsArray = resultObj.data;
             products = productsArray.products;
-            console.log(products);
-            showProductsList()
+            console.log(catName);
+            showProductsList();
+            showCatName();
        }}
 )});
+
+function showCatName(){
+document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
+}
 
 LIST.innerHTML = "";
 function showProductsList(){
@@ -32,8 +37,8 @@ function showProductsList(){
                 </div>
             </div>
             `
-        }}}
 
-        console.log(LIST);
+        }
 
-        
+    }
+    }       
