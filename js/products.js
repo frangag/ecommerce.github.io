@@ -1,30 +1,31 @@
 let categoryID = localStorage.getItem("catID");
-let API = `https://japceibal.github.io/emercado-api/cats_products/${categoryID}.json`
+let API = `https://japceibal.github.io/emercado-api/cats_products/${categoryID}.json`; /*Ahora la API traerá los productos de la categoría seleccionada por el usuario*/
 let productsArray = [];
-let products =[];
+let products = [];
 let LIST = document.getElementById("list");
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(API).then(function(resultObj){
-        if (resultObj.status === "ok"){
-            productsArray = resultObj.data;
-            products = productsArray.products;
-            console.log(catName);
-            showProductsList();
-            showCatName();
-       }}
-)});
+document.addEventListener("DOMContentLoaded", function (e) {
+  getJSONData(API).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      productsArray = resultObj.data;
+      products = productsArray.products;
+      console.log(catName);
+      showProductsList();
+      showCatName();
+    }
+  });
+});
 
-function showCatName(){
-document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
+function showCatName() {
+  document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
 }
 
 LIST.innerHTML = "";
-function showProductsList(){
-    let i=0;
-        while (i<1){
-                i++;
-            for(let product of products){
-                 LIST.innerHTML+=`
+function showProductsList() {
+  let i = 0;
+  while (i < 1) {
+    i++;
+    for (let product of products) {
+      LIST.innerHTML += `
                 <div class="list-group-item list-group-item-action cursor-active">
                  <div class="row">
                    <div class="col-3">
@@ -37,9 +38,7 @@ function showProductsList(){
                     </div>
                 </div>
             </div>
-            `
-
-        }
-
+            `;
     }
-    }       
+  }
+}
