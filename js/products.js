@@ -3,6 +3,11 @@ let API = `https://japceibal.github.io/emercado-api/cats_products/${categoryID}.
 let productsArray = [];
 let products = [];
 let LIST = document.getElementById("list");
+
+function showCatName() {
+  document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(API).then(function (resultObj) {
     if (resultObj.status === "ok") {
@@ -15,15 +20,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 });
 
-function showCatName() {
-  document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
-}
-
 LIST.innerHTML = "";
 function showProductsList() {
-  let i = 0;
-  while (i < 1) {
-    i++;
     for (let product of products) {
       LIST.innerHTML += `
                 <div class="list-group-item list-group-item-action cursor-active">
@@ -40,5 +38,4 @@ function showProductsList() {
             </div>
             `;
     }
-  }
 }
