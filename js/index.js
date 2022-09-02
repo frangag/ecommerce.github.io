@@ -12,7 +12,7 @@ regBtn.addEventListener("click", () =>  {
     if(allFields === true) {
         let userName = document.getElementById("floatingInput");
         localStorage.setItem("userName", userName.value);
-        window.location.replace("../main.html") //acá cambié a una ruta relativa
+        window.location.replace("main.html") //acá cambié a una ruta relativa
         // "replace" no deja volver a la página anterior, para un login viene bien
         // "assign" hace algo parecido pero deja volver atrás
     } else {
