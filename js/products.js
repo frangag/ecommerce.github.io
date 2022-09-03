@@ -4,8 +4,8 @@ const ORDER_DESC_BY_COST = "v$";
 const ORDER_BY_REL = "Rel.";
 let currentProductsArray = [];
 let currentSortCriteria = undefined;
-let minCount = undefined;
-let maxCount = undefined;
+let minCost = undefined;
+let maxCost = undefined;
 
 /* Mostrar nombre de la categoría */
 function showCategoryName() {
@@ -74,10 +74,10 @@ function showProductsList() {
   for (let i = 0; i < currentProductsArray.length; i++) {
     let product = currentProductsArray[i];
     if (
-      (minCount == undefined ||
-        (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-      (maxCount == undefined ||
-        (maxCount != undefined && parseInt(product.cost) <= maxCount))
+      (minCost == undefined ||
+        (minCost != undefined && parseInt(product.cost) >= minCost)) &&
+      (maxCost == undefined ||
+        (maxCost != undefined && parseInt(product.cost) <= maxCost))
     ) {
       htmlContentToAppend += `
                   <div class="list-group-item list-group-item-action cursor-active">
@@ -124,32 +124,32 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("clearRangeFilter")
     .addEventListener("click", function () {
-      document.getElementById("rangeFilterCountMin").value = "";
-      document.getElementById("rangeFilterCountMax").value = "";
+      document.getElementById("rangeFilterCostMin").value = "";
+      document.getElementById("rangeFilterCostMax").value = "";
 
-      minCount = undefined;
-      maxCount = undefined;
+      minCost = undefined;
+      maxCost = undefined;
 
       showProductsList();
     });
 
   /* FILTRO POR PRECIO*/
   document
-    .getElementById("rangeFilterCount")
+    .getElementById("rangeFilterCost")
     .addEventListener("click", function () {
-      minCount = document.getElementById("rangeFilterCountMin").value;
-      maxCount = document.getElementById("rangeFilterCountMax").value;
+      minCost = document.getElementById("rangeFilterCostMin").value;
+      maxCost = document.getElementById("rangeFilterCostMax").value;
 
-      if (minCount != undefined && minCount != "" && parseInt(minCount) >= 0) {
-        minCount = parseInt(minCount);
+      if (minCost != undefined && minCost != "" && parseInt(minCost) >= 0) {
+        minCost = parseInt(minCost);
       } else {
-        minCount = undefined;
+        minCost = undefined;
       }
 
-      if (maxCount != undefined && maxCount != "" && parseInt(maxCount) >= 0) {
-        maxCount = parseInt(maxCount);
+      if (maxCost != undefined && maxCost != "" && parseInt(maxCost) >= 0) {
+        maxCost = parseInt(maxCost);
       } else {
-        maxCount = undefined;
+        maxCost = undefined;
       }
       showProductsList();
     });
