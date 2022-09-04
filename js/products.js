@@ -1,6 +1,6 @@
 let API = `${PRODUCTS_URL}${localStorage.getItem("catID")}${EXT_TYPE}`; /*Se traen los productos de la categoría seleccionada por el usuario*/
-const ORDER_ASC_BY_COST = "^$";
-const ORDER_DESC_BY_COST = "v$";
+const ORDER_ASC_BY_COST = "^$"; 
+const ORDER_DESC_BY_COST = "v$"; /* Inicializo las constantes y variables necesarias para el filter y los sorts */
 const ORDER_BY_REL = "Rel.";
 let currentProductsArray = [];
 let currentSortCriteria = undefined;
@@ -52,6 +52,7 @@ function sortProducts(criteria, array) {
   return result;
 }
 
+/* Esta funcion ejecuta sortProducts() para el criterio y array determinados y devuelve showProductsList()*/
 function sortAndShowProducts(sortCriteria, productsArray) {
   currentSortCriteria = sortCriteria;
 
@@ -64,10 +65,10 @@ function sortAndShowProducts(sortCriteria, productsArray) {
     currentProductsArray
   );
 
-  //Muestro los productos ordenados
   showProductsList();
-}
+} 
 
+/* Esta función modifica el contenido de list con los datos ordenados y/o filtrados */
 function showProductsList() {
   let currentProductsArray = productsArray.products;
   let htmlContentToAppend = "";

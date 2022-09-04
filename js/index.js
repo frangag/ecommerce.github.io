@@ -11,8 +11,8 @@ regBtn.addEventListener("click", () =>  {
 
     if(allFields === true) {
         let userName = document.getElementById("floatingInput");
-        localStorage.setItem("userName", userName.value);
-        window.location.replace("main.html") //acá cambié a una ruta relativa en lugar del link a Github Pages
+        localStorage.setItem("userName", userName.value); /* se guarda el username en el localStorage */
+        window.location.replace("main.html"); //acá cambié a una ruta relativa en lugar del link a Github Pages
         // "replace" no deja volver a la página anterior, para un login viene bien
         // "assign" hace algo parecido pero deja volver atrás
     } else {
