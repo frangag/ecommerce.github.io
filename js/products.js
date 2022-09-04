@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       productsArray = resultObj.data;
       products = productsArray.products;
       showCategoryName();
-      sortAndShowProducts(ORDER_ASC_BY_COST, productsArray.products);
+      sortAndShowProducts(ORDER_BY_REL, productsArray.products); /* Por defecto se muestran ordenados por relevancia */
     }
   });
   /*  */
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
       maxCost = document.getElementById("rangeFilterCostMax").value;
 
       if (minCost != undefined && minCost != "" && parseInt(minCost) >= 0) {
-        minCost = parseInt(minCost);
+        minCost = parseInt(minCost); 
       } else {
         minCost = undefined;
       }
