@@ -12,7 +12,7 @@ function showCategoryName() {
   document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
 }
 
-/* Función que recibe dos parámetros: una constante y un array; ordenará el array según la constante*/
+/* Función que recibe dos parámetros: una constante y un array; ordenará el array según la constante (que se toma del botón que clickea el usuario)*/
 function sortProducts(criteria, array) {
   let result = [];
   if (criteria === ORDER_ASC_BY_COST) {
@@ -110,15 +110,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   /*  */
   document.getElementById("sortAsc").addEventListener("click", function () {
-    sortAndShowProducts(ORDER_ASC_BY_COST);
+    sortAndShowProducts(ORDER_ASC_BY_COST); /* Costo ascendente */
   });
 
   document.getElementById("sortDesc").addEventListener("click", function () {
-    sortAndShowProducts(ORDER_DESC_BY_COST);
+    sortAndShowProducts(ORDER_DESC_BY_COST); /* Costo descendente */
   });
 
   document.getElementById("sortByCount").addEventListener("click", function () {
-    sortAndShowProducts(ORDER_BY_REL);
+    sortAndShowProducts(ORDER_BY_REL); /* Sort por relevancia */
   });
 
   /* LIMPIADOR DE FILTROS */
