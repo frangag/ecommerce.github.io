@@ -7,6 +7,9 @@ let currentSortCriteria = undefined;
 let minCost = undefined;
 let maxCost = undefined;
 
+document.getElementById("userName").innerHTML = localStorage.getItem("userName");
+ /* Se modifica el texto del elemento de id "userName" con el valor ingresado por el usuario */
+
 /* Mostrar nombre de la categoría */
 function showCategoryName() {
   document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
@@ -51,6 +54,11 @@ function sortProducts(criteria, array) {
   }
   return result;
 }
+/* Función que setea el prodID en el localStorage y redirige a product-info.html */
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
 
 /* Esta funcion ejecuta sortProducts() para el criterio y array determinados y devuelve showProductsList()*/
 function sortAndShowProducts(sortCriteria, productsArray) {
@@ -79,9 +87,9 @@ function showProductsList() {
         (minCost != undefined && parseInt(product.cost) >= minCost)) &&
       (maxCost == undefined ||
         (maxCost != undefined && parseInt(product.cost) <= maxCost))
-    ) {
+    ) { /* Añadí onclick="setProdID(${product.id})" para que al hacer click se ejecute la función setProdID */
       htmlContentToAppend += `
-                  <div class="list-group-item list-group-item-action cursor-active">
+                  <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                    <div class="row">
                      <div class="col-3">
                           <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -104,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (resultObj.status === "ok") {
       productsArray = resultObj.data;
       products = productsArray.products;
+      console.log(API);
       showCategoryName();
       sortAndShowProducts(ORDER_BY_REL, productsArray.products); /* Por defecto se muestran ordenados por relevancia */
     }

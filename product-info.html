@@ -38,10 +38,34 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
+    <div class="container" id="container">
+      <!-- <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      </div> -->
+    </div>
+    <div id="images">
+    </div>
+    <h4 class="mb-1">Comentarios</h4>
+    <div id="comments">
+    </div>
+       <div>
+        <h4 class="mb-1">Comentar</h4>
+      <label for="newComment">Tu opinión:</label>
+      <br>
+      <textarea name="newComment" id="newComment" cols="30" rows="10"></textarea>
+      <br>
+      <label for="newScore">Tu puntuación:</label>
+      <br>
+      <select name="newScore" id="newScore">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <br>
+    <br>
+    <button class="btn-lg btn-primary" id="submitBtn">Enviar</button>
     </div>
   </main>
   <footer class="text-muted">

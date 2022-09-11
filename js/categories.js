@@ -6,6 +6,11 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+document.getElementById("userName").innerHTML =
+  localStorage.getItem(
+    "userName"
+  ); /* Se modifica el texto del elemento de id "userName" con el valor ingresado por el usuario */
+
 function sortCategories(criteria, array) {
   let result = [];
   if (criteria === ORDER_ASC_BY_NAME) {
