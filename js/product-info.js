@@ -5,11 +5,10 @@ let API_COMMENTS = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem(
   "prodID"
 )}${EXT_TYPE}`;
 let infoArray = [];
+let USERNAME = localStorage.getItem("userName");
 
 document.getElementById("userName").innerHTML =
-  localStorage.getItem(
-    "userName"
-  ); /* Se modifica el texto del elemento de id "userName" con el valor ingresado por el usuario */
+  USERNAME; /* Se modifica el texto del elemento de id "userName" con el valor ingresado por el usuario */
 
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(API_INFO).then(function (resultObj) {
@@ -137,7 +136,7 @@ submitBtn.addEventListener("click", function () {
       : '<span class="fa fa-star"></span>'; 
       /* Se añade el nuevo comentario */
   document.getElementById("comments").innerHTML += `<div>
-    <b>unknown_user</b> - ${newCommentDate} - 
+    <b>${USERNAME}</b> - ${newCommentDate} - 
     ${star1}
       ${star2}
       ${star3}
