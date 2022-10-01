@@ -1,6 +1,7 @@
 /* gapi.load("auth2", function () {
   gapi.auth2.init();
 }); */
+// Acá estoy intentando implementar el login con Google
 imageGoogle.addEventListener("click", () => {
     document.getElementById("imageGoogle").src = 'img/btn_google_signin_dark_pressed_web.png';
 });
