@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (resultObj.status === "ok") {
       currentCategoriesArray = resultObj.data;
       showCategoriesList();
+      showUserNameAndDropdownMenu();
       //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
     }
   });

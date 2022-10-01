@@ -197,3 +197,18 @@ a.custom-card:hover {
   max-width: 25%;
   height: auto;
 }
+
+.images-carousel {
+  display: flex;
+  justify-content: center;
+}
+
+#images {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+.relatedProducts{
+  display: flex;
+  justify-content: center;
+}

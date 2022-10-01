@@ -7,9 +7,6 @@ let currentSortCriteria = undefined;
 let minCost = undefined;
 let maxCost = undefined;
 
-document.getElementById("userName").innerHTML = localStorage.getItem("userName");
- /* Se modifica el texto del elemento de id "userName" con el valor ingresado por el usuario */
-
 /* Mostrar nombre de la categoría */
 function showCategoryName() {
   document.getElementById("catName").innerHTML += ` ${productsArray.catName}`;
@@ -54,11 +51,7 @@ function sortProducts(criteria, array) {
   }
   return result;
 }
-/* Función que setea el prodID en el localStorage y redirige a product-info.html */
-function setProdID(id) {
-  localStorage.setItem("prodID", id);
-  window.location = "product-info.html";
-}
+
 
 /* Esta funcion ejecuta sortProducts() para el criterio y array determinados y devuelve showProductsList()*/
 function sortAndShowProducts(sortCriteria, productsArray) {
@@ -114,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
       products = productsArray.products;
       console.log(API);
       showCategoryName();
+      showUserNameAndDropdownMenu();
       sortAndShowProducts(ORDER_BY_REL, productsArray.products); /* Por defecto se muestran ordenados por relevancia */
     }
   });

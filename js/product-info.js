@@ -15,8 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (resultObj.status === "ok") {
       infoArray = resultObj.data;
       console.log(API_INFO);
+      console.log(infoArray);
       console.log(API_COMMENTS);
       showInfo();
+      showUserNameAndDropdownMenu();
     } /* Se consulta la API que contiene la información del producto */
   });
 
@@ -28,6 +30,22 @@ document.addEventListener("DOMContentLoaded", function () {
     } /* Se consulta la API que contiene los comentarios */
   });
 });
+
+function showRelatedProducts() {
+  let htmlContentToAppend = "";
+  let relatedProducts = infoArray.relatedProducts;
+  console.log(relatedProducts);
+  for (let i = 0; i < relatedProducts.length; i++) {
+    htmlContentToAppend += `
+    <div onclick="setProdID(${relatedProducts[i].id})" class="list-group-item list-group-item-action cursor-active">
+    <div class="card" style="width: 18rem;">
+  <img src="${relatedProducts[i].image}" class="card-img-top" alt="${relatedProducts[i].name}">
+  <div class="card-body">
+    <h5 class="card-title">${relatedProducts[i].name}</h5>
+  </div>`
+  }
+  document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
+}
 
 function showInfo() {
   let htmlContentToAppend = "";
@@ -49,12 +67,30 @@ function showInfo() {
         <h4 class="mb-1">Imágenes ilustrativas</h4>
       </div>
       `; /* Se muestra la información del producto */
-  for (let i = 0; i < imagesArray.length; i++) {
+  htmlImages += `<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="${imagesArray[0]}" class="images-carousel" class="d-block w-75" alt="${infoArray.name[0]}">
+    </div>`;
+  for (let i = 1; i < imagesArray.length; i++) {
     const IMAGE = imagesArray[i];
-    htmlImages += `<img src="${IMAGE}" class="img-products"></img>`;
+    htmlImages += `<div class="carousel-item">
+      <img src="${IMAGE}" class="images-carousel" class="d-block w-10" alt="${infoArray.name}">
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+  </div>`;
+    /* <img src="${IMAGE}" class="img-products"></img>; */
   } /* Se muestran las imágenes asociadas al producto */
   document.getElementById("container").innerHTML = htmlContentToAppend;
   document.getElementById("images").innerHTML = htmlImages;
+  showRelatedProducts();
 }
 
 function showComments() {
@@ -91,7 +127,7 @@ function showComments() {
     <br>
     ${comment.description}
     </div>
-    `;/* Se muestra la información del comentario */
+    `; /* Se muestra la información del comentario */
   }
 
   document.getElementById("comments").innerHTML = htmlContentToAppend;
@@ -133,8 +169,8 @@ submitBtn.addEventListener("click", function () {
   let star5 =
     newScore >= 5
       ? '<span class="fa fa-star checked"></span>'
-      : '<span class="fa fa-star"></span>'; 
-      /* Se añade el nuevo comentario */
+      : '<span class="fa fa-star"></span>';
+  /* Se añade el nuevo comentario */
   document.getElementById("comments").innerHTML += `<div>
     <b>${USERNAME}</b> - ${newCommentDate} - 
     ${star1}

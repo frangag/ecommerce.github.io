@@ -3,25 +3,23 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eMercado - Inicio de sesión</title>
+    <meta name="google-signin-client_id" content="1062106676682-nikt5m0ojf44k39gs9npt3mfp51ike34.apps.googleusercontent.com">
 
+    <title>eMercado - Inicio de sesión</title>
+    
+    <link rel="stylesheet" href="css/index.css">
     <link href="css/styles.css" rel="stylesheet">
-   <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <style>
-    body {
-      background-color: rgb(248, 249, 250);
-    }
-</style>
 </head>
 
 <body class="text-center">
   
 <main class="form-signin">
-
-  <img class="mb-4" src="img/login.png" alt="imagen de portada" width="900" height="300">
+<div id="backgroundLogin">
+  <img src="img/login.png" alt="Imagen de portada">
   <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
-
+</div><form>
   <div class="form-floating">
     <label for="floatingInput"></label>
     <input type="email" class="form-control" autocomplete="off" id="floatingInput" placeholder="Correo electrónico">
@@ -30,8 +28,12 @@
     <label for="floatingPassword"></label>
     <input type="password" class="form-control" autocomplete="off" id="floatingPassword" placeholder="Contraseña">
   </div>
-
+</form>
   <button class="w-100 btn btn-lg btn-primary" type="submit" id="regBtn">Ingresar</button>
+  <div id="signin">
+    <label for="imageGoogle">También puedes acceder con tu cuenta de Google:</label>
+    <button><img id="imageGoogle" src="img/btn_google_signin_dark_normal_web.png" alt="Registrarse con Google"></button>
+  </div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -41,9 +43,12 @@
         2022</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
+    
+    </div>
   </footer>
 </main>
 
 <script src="js/index.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
 </body>
 </html>
