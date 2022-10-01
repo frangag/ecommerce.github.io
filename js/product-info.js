@@ -37,11 +37,11 @@ function showRelatedProducts() {
   console.log(relatedProducts);
   for (let i = 0; i < relatedProducts.length; i++) {
     htmlContentToAppend += `
-    <div onclick="setProdID(${relatedProducts[i].id})" class="list-group-item list-group-item-action cursor-active">
-    <div class="card" style="width: 18rem;">
+    <div onclick="setProdID(${relatedProducts[i].id})" class="card cursor-active border-1" style="width: 18rem;">
   <img src="${relatedProducts[i].image}" class="card-img-top" alt="${relatedProducts[i].name}">
   <div class="card-body">
     <h5 class="card-title">${relatedProducts[i].name}</h5>
+  </div>
   </div>`
   }
   document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
@@ -133,7 +133,7 @@ function showComments() {
   document.getElementById("comments").innerHTML = htmlContentToAppend;
 }
 
-/* DESAFIATE */
+/* DESAFIATE E3*/
 submitBtn.addEventListener("click", function () {
   let newComment =
     document.getElementById(
