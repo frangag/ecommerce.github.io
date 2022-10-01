@@ -76,8 +76,10 @@ function showInfo() {
     const IMAGE = imagesArray[i];
     htmlImages += `<div class="carousel-item">
       <img src="${IMAGE}" class="images-carousel" class="d-block w-10" alt="${infoArray.name}">
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    </div>`;
+    /* <img src="${IMAGE}" class="img-products"></img>; */
+  } /* Se muestran las imágenes asociadas al producto */
+  htmlImages += `<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
   <span class="visually-hidden">Previous</span>
 </button>
@@ -86,8 +88,6 @@ function showInfo() {
   <span class="visually-hidden">Next</span>
 </button>
   </div>`;
-    /* <img src="${IMAGE}" class="img-products"></img>; */
-  } /* Se muestran las imágenes asociadas al producto */
   document.getElementById("container").innerHTML = htmlContentToAppend;
   document.getElementById("images").innerHTML = htmlImages;
   showRelatedProducts();
