@@ -27,7 +27,7 @@ function showUserNameAndDropdownMenu() {
   </ul>
 </div>`;
   logOut.addEventListener("click", function () {
-    localStorage.removeItem("userName");
+    localStorage.clear;
   }); // Al hacer click en "Cerrar Sesión", se elimina el userName del localStorage
 }
 
