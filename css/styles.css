@@ -212,3 +212,12 @@ a.custom-card:hover {
   display: flex;
   justify-content: center;
 }
+
+table{
+  width: 100%;
+}
+
+tr{
+  border: 0.5px solid black;
+
+}

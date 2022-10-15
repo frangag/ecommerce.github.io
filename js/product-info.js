@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
   getJSONData(API_INFO).then(function (resultObj) {
     if (resultObj.status === "ok") {
       infoArray = resultObj.data;
-      console.log(API_INFO);
+      /* console.log(API_INFO);
       console.log(infoArray);
-      console.log(API_COMMENTS);
+      console.log(API_COMMENTS); */
       showInfo();
       showUserNameAndDropdownMenu();
     } /* Se consulta la API que contiene la información del producto */
