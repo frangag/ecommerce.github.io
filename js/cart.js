@@ -145,6 +145,7 @@ modal.addEventListener("input", () => {
       formaDePagoSpan.innerHTML = "Tarjeta de crédito";
     }
   }
+  validarFormaDePago();
 });
 
 function showSuccessfulAlert() {
