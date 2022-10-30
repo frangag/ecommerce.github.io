@@ -226,3 +226,11 @@ tr{
 width: inline;
 }
 
+.align-right{
+  align-content: flex-end;
+}
+
+.card-number{
+  float: left;
+  margin-right: 20px;
+}
