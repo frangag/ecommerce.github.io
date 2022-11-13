@@ -2,9 +2,10 @@
   gapi.auth2.init();
 }); */
 // Acá estoy intentando implementar el login con Google
-imageGoogle.addEventListener("click", () => {
+/* imageGoogle.addEventListener("click", () => {
     document.getElementById("imageGoogle").src = 'img/btn_google_signin_dark_pressed_web.png';
-});
+}); */
+
 regBtn.addEventListener("click", () => {
   let inputs = document.getElementsByTagName("input");
   let allFields = true;
@@ -26,8 +27,12 @@ regBtn.addEventListener("click", () => {
     // "replace" no deja volver a la página anterior, para un login viene bien
     // "assign" hace algo parecido pero deja volver atrás
   } else {
-    alert("Debe ingresar valores en ambos campos");
-    // puse un alert por falta de tiempo,
-    //quedaría más elegante un mensaje de error para cada campo :/
+    document.getElementById("alertContainer").innerHTML = `<div class="alert alert-danger alert-dismissible fade show sticky-top">
+    Debe ingresar valores en ambos campos.
+</div>`
   }
 });
+
+document.addEventListener("input",()=>{
+  document.getElementById("alertContainer").innerHTML = "";
+})

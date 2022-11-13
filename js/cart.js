@@ -23,25 +23,15 @@ let costoDeEnvio = 0;
 let subtotalValue = 0;
 let totalValue = 0;
 
-function validar(input) {
-  if (input.value === "") {
-    input.classList.remove("is-valid");
-    input.classList.add("is-invalid");
-  } else {
-    input.classList.remove("is-invalid");
-    input.classList.add("is-valid");
-  }
-}
-
 function validarFormaDePago() {
-  for (var i = 0, length = radioFormaDePago.length; i < length; i++) {
-    let validateFormaDePago = radioFormaDePago[0].checked
+  for (var i = 0, length = radioFormaDePago.length; i < length; i++) { // Este for se fija qué radio está seleccionado
+   let validateFormaDePago = radioFormaDePago[0].checked
       ? true
-      : radioFormaDePago[1].checked
+      : radioFormaDePago[1].checked            
       ? true
       : false;
-    if (
-      validateFormaDePago &&
+    if ( //Si un radio está seleccionado y los campos correspondientes a ese radio tienen contenido, se validará
+      validateFormaDePago && 
       (!(BankAccountNumber.value === "") ||
         (!(cardInputCVV.value === "") &&
           !(cardInputExp.value === "") &&
@@ -54,9 +44,9 @@ function validarFormaDePago() {
       formaDePagoBtn.classList.remove("is-valid");
     }
   }
-}
+} 
 
-function checkTipoDeEnvio() {
+function checkTipoDeEnvio() { // Se le asigna un valor a la variable costoDeEnvioPorcentaje según el tipo de envío
   for (var i = 0, length = radioTipoDeEnvio.length; i < length; i++) {
     costoDeEnvioPorcentaje = radioTipoDeEnvio[2].checked
       ? "1.05"
@@ -66,7 +56,7 @@ function checkTipoDeEnvio() {
   }
 }
 
-function UpdateCostos() {
+function UpdateCostos() { //Esta función calcula los diferentes costos
   totalValue = Math.round(costoDeEnvioPorcentaje * subtotalValue);
   costoDeEnvio = totalValue - subtotalValue;
   costoDeEnvioSpan.innerHTML = `USD ${costoDeEnvio}`;
@@ -74,7 +64,7 @@ function UpdateCostos() {
   subtotalCostos.innerHTML = `USD ${subtotalValue}`;
 }
 
-function showInfo() {
+function showInfo() { //Se muestra la información de los artículos del carrito
   let htmlContentToAppend = "";
   let array = infoArray;
   let ARTICULOS = array.articles[0];
@@ -97,7 +87,7 @@ function showInfo() {
   container.innerHTML = htmlContentToAppend;
 }
 
-tipoDeEnvio.addEventListener("input", () => {
+tipoDeEnvio.addEventListener("input", () => { // cuando hay un input en la sección "tipo de envío" se actualizan los costos en tiempo real
   checkTipoDeEnvio();
   UpdateCostos();
 });

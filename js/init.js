@@ -10,6 +10,22 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+document.addEventListener("DOMContentLoaded",()=>{
+if (userName === null){
+  window.location.replace("index.html");  
+}
+}) //Si el userName es vacío se redirige al login
+
+function validar(input) {
+  if (input.value == "") {
+    input.classList.remove("is-valid");
+    input.classList.add("is-invalid");
+  } else {
+    input.classList.remove("is-invalid");
+    input.classList.add("is-valid");
+  }
+} //Esta función verifica que el input no esté vacío y le asigna la clase correspondiente
+
 /* Función que setea el prodID en el localStorage y redirige a product-info.html */
 function setProdID(id) {
   localStorage.setItem("prodID", id);
